@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductsShow from '../views/ProductsShow.vue'
+import ProductsEdit from '../views/ProductsEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/products/:id',
     name: 'ProductsShow',
     component: ProductsShow
+  },
+  {
+    path: '/products/:id/edit',
+    name: 'ProductsEdit',
+    component: ProductsEdit
   },
   {
     path: '/about',
