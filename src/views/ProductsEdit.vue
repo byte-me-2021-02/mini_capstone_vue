@@ -7,7 +7,11 @@
       <p>price: <input type="text" v-model="product.price"></p>
       <p>description: <input type="text" v-model="product.description"></p>      
       <p>quantity: <input type="text" v-model="product.quantity"></p>
-      <p>supplier_id: <input type="text" v-model="product.supplier_id"></p>
+      <p></p>
+       supplier:
+      <select v-model="product.supplier_id">
+        <option v-bind:value="supplier.id" v-for="supplier in suppliers">{{supplier.name}}</option>        
+      </select>
       <input type="submit" value="Edit the product">
     </form>
   </div>
@@ -30,13 +34,21 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js! edit",
-      product: {}
+      product: {},
+      suppliers: []
     };
   },
   created: function() {
     axios.get(`/api/products/${this.$route.params.id}`).then(response => {
       console.log(response.data)
       this.product = response.data;
+    })
+
+    // get the daata on the suppliers
+    axios.get('/api/suppliers').then(response => {
+      console.log('suppliers')
+      console.log(response.data)
+      this.suppliers = response.data;
     })
   },
   methods: {

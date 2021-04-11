@@ -5,7 +5,7 @@
     <p>description: {{ product.description }}</p>
     <!-- <p>images: {{ product.images[0].url }}</p>     -->
     <img v-for="image in product.images" v-bind:src="image.url">
-    <p>supplier: {{ product.supplier }}</p>
+    <p>supplier: {{ product.supplier_id }}</p>
   </div>
 </template>
 
